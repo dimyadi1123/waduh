@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greeting Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #ffc0cb; /* Warna background wanita */
+        overflow: hidden;
+      }
+
+      .message-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      #message {
+        font-size: 32px;
+        font-weight: bold;
+        background-color: #ffd700; /* Warna latar belakang pesan */
+        border: 3px solid #ff4500; /* Warna border pesan */
+        border-radius: 10px; /* Sudut border pesan */
+        padding: 20px;
+        margin-bottom: 20px; /* Jarak antara pesan dan tombol */
+        position: relative;
+      }
+
+      #changeBackground {
+        margin: 0;
+        padding: 5px 10px; /* Mengurangi ukuran tombol */
+        font-size: 14px; /* Mengurangi ukuran font tombol */
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 10px; /* Jarak dari atas */
+        left: 10px; /* Jarak dari kiri */
+        z-index: 1; /* Agar tombol tetap di atas pesan */
+      }
+
+      #changeBackground:hover {
+        background-color: #0056b3;
+      }
+      .click-box {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .click-box button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      .click-box button:hover {
+        background-color: #0056b3;
+      }
+
+      /* CSS untuk kotak notifikasi */
+      .notification-box {
+        background-color: #ffd700;
+        border: 3px solid #ff4500;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        display: none; /* Sembunyikan kotak notifikasi awalnya */
+        margin-top: 20px;
+        position: relative;
+      }
+      /* CSS untuk tombol "Iya" dan "Tidak" dalam kotak notifikasi */
+      .notification-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .notification-button.small {
+        padding: 5px 10px; /* Ubah ukuran tombol menjadi lebih kecil */
+        font-size: 14px; /* Ubah ukuran font tombol */
+        width: auto; /* Biarkan lebar sesuai dengan isi tombol */
+        height: auto; /* Biarkan tinggi sesuai dengan isi tombol */
+        border-radius: 100px; /* Tentukan sudut border */
+        margin: 5px 0; /* Jarak antara tombol */
+      }
+
+      #iyaButton {
+        /* Ubah posisi tombol "Iya" agar berada di atas tengah */
+        left: 50%; /* Tempatkan di tengah secara horizontal */
+        top: 120%; /* Atur posisi di atas tengah vertikal */
+        transform: translateX(-50%); /* Pusatkan horizontal */
+        position: absolute;
+      }
+
+      #tidakButton {
+        /* Ubah posisi tombol "Tidak" agar berada di bawah tengah */
+        left: 50%; /* Tempatkan di tengah secara horizontal */
+        top: 200%; /* Atur posisi di bawah tengah vertikal */
+        transform: translateX(-50%); /* Pusatkan horizontal */
+        position: absolute;
+      }
+
+      .notification-button:hover {
+        background-color: #0056b3;
+        color: #fff; /* Ubah warna teks saat hover menjadi putih */
+      }
+
+      /* CSS untuk gambar di pojok halaman */
+      .corner-image {
+        position: absolute;
+        width: 150px; /* Sesuaikan lebar gambar sesuai kebutuhan */
+        height: auto; /* Biarkan tinggi mengikuti proporsi aslinya */
+        z-index: 2; /* Letakkan gambar di atas latar belakang */
+      }
+
+      /* Gambar pojok kanan atas */
+      .top-right {
+        top: 20px; /* Atur jarak dari atas */
+        right: 20px; /* Atur jarak dari kanan */
+      }
+
+      /* Gambar pojok kiri bawah */
+      .bottom-left {
+        bottom: 20px; /* Atur jarak dari bawah */
+        left: 20px; /* Atur jarak dari kiri */
+      }
+
+      /* Gambar pojok kanan bawah */
+      .bottom-right {
+        bottom: 20px; /* Atur jarak dari bawah */
+        right: 20px; /* Atur jarak dari kanan */
+      }
+      /* CSS untuk teks "Semangat Mbak" */
+      span {
+        font-size: 24px; /* Ukuran font */
+        font-weight: bold; /* Teks tebal */
+        color: #0000ff; /* Warna teks (biru tua) yang berkontras dengan kuning */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan teks */
+        cursor: pointer; /* Kursor berubah menjadi tangan saat diarahkan */
+        transition: transform 0.2s ease-in-out; /* Efek animasi saat dihover */
+      }
+
+      /* Efek animasi saat menghover teks */
+      span:hover {
+        transform: scale(1.1); /* Perbesar teks saat dihover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message-container">
+      <div id="message">
+        You are a beautiful person with a charming personality.
+      </div>
+      <button id="changeBackground">Change Background</button>
+    </div>
+
+    <img
+      src="meme1.jpg"
+      alt="Meme 1"
+      id="meme1"
+      class="corner-image top-right"
+    />
+    <img
+      src="meme2.jpg"
+      alt="Meme 2"
+      id="meme2"
+      class="corner-image bottom-left"
+    />
+    <img
+      src="meme3.jpg"
+      alt="Meme 3"
+      id="meme3"
+      class="corner-image bottom-right"
+    />
+
+    <!-- Kotak notifikasi (awalnya disembunyikan) -->
+    <div id="notification-box" class="notification-box">
+      <span>Semangat Mbak</span>
+      <div id="notification-buttons">
+        <button class="notification-button" id="iyaButton">Iya</button>
+        <button class="notification-button" id="tidakButton">Tidak</button>
+      </div>
+    </div>
+
+    <div class="click-box">
+      <button id="klikButton">Klik disini!</button>
+    </div>
+
+    <script>
+      const changeBackgroundButton =
+        document.getElementById("changeBackground");
+      const closeButton = document.getElementById("closeButton");
+      const moveButton = document.getElementById("moveButton");
+      const colors = [
+        "#ffc0cb",
+        "#ffcccb",
+        "#ffec99",
+        "#cbf0f8",
+        "#c2f7a9",
+      ]; /* Warna background wanita dan variasi */
+
+      let currentColorIndex = 0;
+
+      changeBackgroundButton.addEventListener("click", () => {
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+        document.body.style.backgroundColor = colors[currentColorIndex];
+      });
+
+      // Tambahkan ini di dalam <script> Anda
+
+      const klikButton = document.getElementById("klikButton");
+      const notificationBox = document.getElementById("notification-box");
+
+      klikButton.addEventListener("click", () => {
+        // Sembunyikan kotak "Klik disini!"
+        klikButton.parentElement.style.display = "none";
+
+        // Tampilkan kotak notifikasi
+        notificationBox.style.display = "block";
+      });
+
+      iyaButton.addEventListener("click", () => {
+        // Tambahkan tindakan yang ingin Anda lakukan saat tombol "Iya" diklik
+        alert("Thank You, Mbak Ahla😊😎.");
+        // Menutup halaman otomatis
+        window.close();
+      });
+
+      const tidakButton = document.getElementById("tidakButton");
+
+      tidakButton.addEventListener("click", () => {
+        // Tombol "Tidak" akan bergerak secara acak saat diklik
+        moveTidakButton();
+      });
+
+      function moveTidakButton() {
+        // Mengambil lebar dan tinggi maksimal layar
+        const maxWidth = window.innerWidth - 100;
+        const maxHeight = window.innerHeight - 40;
+
+        // Menghasilkan posisi acak untuk tombol "Tidak"
+        const randomX = Math.random() * maxWidth;
+        const randomY = Math.random() * maxHeight;
+
+        // Mengatur posisi tombol "Tidak" ke posisi acak
+        tidakButton.style.left = randomX + "px";
+        tidakButton.style.top = randomY + "px";
+
+        // Lanjutkan pergerakan
+        setTimeout(moveTidakButton, 500); // Mengulangi setiap 1 detik
+      }
+    </script>
+  </body>
+</html>
