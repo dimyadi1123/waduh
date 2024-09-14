@@ -52,6 +52,7 @@
       #changeBackground:hover {
         background-color: #0056b3;
       }
+
       .click-box {
         text-align: center;
         margin-top: 20px;
@@ -81,6 +82,7 @@
         margin-top: 20px;
         position: relative;
       }
+
       /* CSS untuk tombol "Iya" dan "Tidak" dalam kotak notifikasi */
       .notification-buttons {
         display: flex;
@@ -144,6 +146,7 @@
         bottom: 20px; /* Atur jarak dari bawah */
         right: 20px; /* Atur jarak dari kanan */
       }
+
       /* CSS untuk teks "Semangat Mbak" */
       span {
         font-size: 24px; /* Ukuran font */
@@ -179,8 +182,7 @@
   0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
   50% { width: 0.5vmin; opacity: 1; }
   100% { width: var(--finalSize); opacity: 0; }
-}
- */
+} */
       .firework,
       .firework::before,
       .firework::after {
@@ -204,8 +206,8 @@
         transform: translate(-50%, var(--y));
         width: var(--initialSize);
         aspect-ratio: 1;
-        background: 
-    /*
+        background:
+    /* 
     radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
     radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
     radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
@@ -282,25 +284,22 @@
             13% 42%;
         background-size: var(--initialSize) var(--initialSize);
         background-repeat: no-repeat;
+        z-index: -1; /* Pastikan firework berada di belakang elemen lain */
       }
 
       .firework::before {
         --x: -50%;
         --y: -50%;
         --initialY: -50%;
-        /*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
         transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
-        /*   animation: fireworkPseudo 2s infinite; */
       }
 
       .firework::after {
         --x: -50%;
         --y: -50%;
         --initialY: -50%;
-        /*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
         transform: translate(-50%, -50%) rotate(170deg) scale(1.15)
           rotateY(-30deg);
-        /*   animation: fireworkPseudo 2s infinite; */
       }
 
       .firework:nth-child(2) {
@@ -341,15 +340,18 @@
         top: 60%;
         animation-delay: -0.4s;
       }
+
       * {
         margin: 0;
         padding: 0;
       }
+
       .wrapper {
         height: 100%;
         width: 100%;
         background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423);
         position: absolute;
+        z-index: -1; /* Menetapkan z-index yang rendah untuk memastikan berada di belakang elemen lain */
       }
 
       .wrapper div {
@@ -360,8 +362,9 @@
         position: absolute;
         top: 10%;
         left: 10%;
-        animation: 4s linear infinite;
+        animation: animate 4s linear infinite;
       }
+
       div .dot {
         height: 10px;
         width: 10px;
@@ -371,81 +374,97 @@
         top: 20%;
         right: 20%;
       }
+
       .wrapper div:nth-child(1) {
         top: 20%;
         left: 20%;
         animation: animate 8s linear infinite;
       }
+
       .wrapper div:nth-child(2) {
         top: 60%;
         left: 80%;
         animation: animate 10s linear infinite;
       }
+
       .wrapper div:nth-child(3) {
         top: 40%;
         left: 40%;
         animation: animate 3s linear infinite;
       }
+
       .wrapper div:nth-child(4) {
         top: 66%;
         left: 30%;
         animation: animate 7s linear infinite;
       }
+
       .wrapper div:nth-child(5) {
         top: 90%;
         left: 10%;
         animation: animate 9s linear infinite;
       }
+
       .wrapper div:nth-child(6) {
         top: 30%;
         left: 60%;
         animation: animate 5s linear infinite;
       }
+
       .wrapper div:nth-child(7) {
         top: 70%;
         left: 20%;
         animation: animate 8s linear infinite;
       }
+
       .wrapper div:nth-child(8) {
         top: 75%;
         left: 60%;
         animation: animate 10s linear infinite;
       }
+
       .wrapper div:nth-child(9) {
         top: 50%;
         left: 50%;
         animation: animate 6s linear infinite;
       }
+
       .wrapper div:nth-child(10) {
         top: 45%;
         left: 20%;
         animation: animate 10s linear infinite;
       }
+
       .wrapper div:nth-child(11) {
         top: 10%;
         left: 90%;
         animation: animate 9s linear infinite;
       }
+
       .wrapper div:nth-child(12) {
         top: 20%;
         left: 70%;
         animation: animate 7s linear infinite;
       }
+
       .wrapper div:nth-child(13) {
         top: 20%;
         left: 20%;
         animation: animate 8s linear infinite;
       }
+
       .wrapper div:nth-child(14) {
         top: 60%;
         left: 5%;
         animation: animate 6s linear infinite;
       }
+
       .wrapper div:nth-child(15) {
         top: 90%;
         left: 80%;
         animation: animate 9s linear infinite;
       }
+
       @keyframes animate {
         0% {
           transform: scale(0) translateY(0) rotate(70deg);
