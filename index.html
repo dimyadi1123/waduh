@@ -128,7 +128,11 @@
         height: auto; /* Biarkan tinggi mengikuti proporsi aslinya */
         z-index: 2; /* Letakkan gambar di atas latar belakang */
       }
-
+      /* Gambar pojok kanan atas */
+      .top-left {
+        top: 20px; /* Atur jarak dari atas */
+        left: 20px; /* Atur jarak dari kanan */
+      }
       /* Gambar pojok kanan atas */
       .top-right {
         top: 20px; /* Atur jarak dari atas */
@@ -147,19 +151,53 @@
         right: 20px; /* Atur jarak dari kanan */
       }
 
-      /* CSS untuk teks "Semangat Mbak" */
+      .corner-image {
+        width: 200px; /* Atur ukuran gambar sesuai keinginan */
+        height: 200px; /* Pastikan tinggi dan lebar sama untuk bentuk kotak */
+        border-radius: 15px; /* Membuat sudut gambar lebih tumpul */
+        object-fit: cover; /* Menjaga agar gambar tetap terpotong dengan baik */
+      }
+
+      #memes-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .top-left,
+      .top-right,
+      .bottom-left,
+      .bottom-right {
+        margin: 5px; /* Memberikan jarak antar gambar */
+      }
+
+      /* CSS untuk teks "Semangat" */
       span {
         font-size: 24px; /* Ukuran font */
         font-weight: bold; /* Teks tebal */
-        color: #0000ff; /* Warna teks (biru tua) yang berkontras dengan kuning */
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan teks */
         cursor: pointer; /* Kursor berubah menjadi tangan saat diarahkan */
-        transition: transform 0.2s ease-in-out; /* Efek animasi saat dihover */
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Efek animasi */
       }
 
-      /* Efek animasi saat menghover teks */
-      span:hover {
-        transform: scale(1.1); /* Perbesar teks saat dihover */
+      /* Teks pertama dengan warna biru */
+      .first-text {
+        color: #0000ff; /* Biru tua */
+      }
+
+      .first-text:hover {
+        transform: scale(1.1); /* Efek pembesaran saat hover */
+        color: #ff6347; /* Merah terang saat hover */
+      }
+
+      /* Teks kedua dengan warna hitam */
+      .second-text {
+        color: #000000; /* Warna hitam */
+      }
+
+      .second-text:hover {
+        transform: scale(1.1); /* Efek pembesaran saat hover */
+        color: #ff4500; /* Oranye kemerahan saat hover */
       }
 
       @keyframes firework {
@@ -497,7 +535,6 @@
       <div id="message">
         You are a beautiful person with a charming personality.
       </div>
-      <button id="changeBackground">Change Background</button>
     </div>
 
     <div class="firework"></div>
@@ -508,10 +545,16 @@
       src="lawak1.jpg"
       alt="Meme 1"
       id="meme1"
+      class="corner-image top-left"
+    />
+    <img
+      src="dine 2.jpg"
+      alt="Meme 1"
+      id="meme1"
       class="corner-image top-right"
     />
     <img
-      src="lawak2.jpg"
+      src="dine 1.jpg"
       alt="Meme 2"
       id="meme2"
       class="corner-image bottom-left"
@@ -525,8 +568,12 @@
 
     <!-- Kotak notifikasi (awalnya disembunyikan) -->
     <div id="notification-box" class="notification-box">
-      <span>Keep On Spirit, Sayangku🔥</span>
-      <div><span>Aku akan terus mendukung kamu Dinaku sayang 🥰</span></div>
+      <span class="first-text">Keep On Spirit, Dina🔥</span>
+      <div>
+        <span class="second-text"
+          >Kamu akan selalu menjadi Kesayangankuu 🥰</span
+        >
+      </div>
       <div id="notification-buttons">
         <button class="notification-button" id="iyaButton">Iya</button>
         <button class="notification-button" id="tidakButton">Tidak</button>
@@ -538,26 +585,6 @@
     </div>
 
     <script>
-      const changeBackgroundButton =
-        document.getElementById("changeBackground");
-      const closeButton = document.getElementById("closeButton");
-      const moveButton = document.getElementById("moveButton");
-      const colors = [
-        "#1D5D9B",
-        "#75C2F6",
-        "#F4D160",
-        "#F31559",
-        "#FFB6C1",
-        "#123",
-      ]; /* Warna background wanita dan variasi */
-
-      let currentColorIndex = 0;
-
-      changeBackgroundButton.addEventListener("click", () => {
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-        document.body.style.backgroundColor = colors[currentColorIndex];
-      });
-
       // Tambahkan ini di dalam <script> Anda
 
       const klikButton = document.getElementById("klikButton");
